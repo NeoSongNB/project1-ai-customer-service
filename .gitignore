@@ -1,0 +1,15 @@
+# 本地 Python/conda 运行环境（体积大且含机器相关路径）
+/.conda/
+
+# 编辑器与 IDE 会话数据
+/.vscode/
+/.codebuddy/
+
+# 依赖、缓存与构建产物（子项目自带 .gitignore 已覆盖，此处兜底）
+**/node_modules/
+**/__pycache__/
+*.pyc
+**/uv.lock
+/build/
+/dist/
+/log/

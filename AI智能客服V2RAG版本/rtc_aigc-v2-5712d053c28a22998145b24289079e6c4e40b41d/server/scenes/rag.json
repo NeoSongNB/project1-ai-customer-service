@@ -1,0 +1,68 @@
+{
+  "SceneConfig": {
+    "icon": "https://lf3-rtc-demo.volccdn.com/obj/rtc-aigc-assets/DoubaoAvatar.png",
+    "name": "知识库助手"
+  },
+  "VoiceChat": {
+    "AgentConfig": {
+      "WelcomeMessage": "你好，我可以基于知识库回答问题，有什么需要帮忙的吗？",
+      "UserId": "rag_agent",
+      "EnableConversationStateCallback": true
+    },
+    "Config": {
+      "ASRConfig": {
+        "Provider": "volcano",
+        "ProviderParams": {
+          "Mode": "bigmodel",
+          "ApiResourceId": "volc.bigasr.sauc.duration",
+          "StreamMode": 2,
+          "enable_nonstream": true,
+          "context_history_length": 3
+        },
+        "VADConfig": {
+          "SilenceTime": 600,
+          "AIVAD": false,
+          "ForceBeginThreshold": 0,
+          "ForceEnd": false,
+          "VolumeGain": 1.0
+        },
+        "InterruptConfig": {
+          "InterruptSpeechDuration": 0,
+          "InterruptKeywords": []
+        },
+        "TurnDetectionMode": 0
+      },
+      "TTSConfig": {
+        "AutoActive": true,
+        "Provider": "volcano_bidirection",
+        "ProviderParams": {
+          "ResourceId": "volc.service_type.10029",
+          "audio": {
+            "voice_type": "zh_female_linjianvhai_moon_bigtts",
+            "speech_rate": 0
+          },
+          "additions": {
+            "enable_latex_tn": false
+          }
+        },
+        "IgnoreBracketText": [],
+        "Context": {
+          "TagParse": false,
+          "QuoteUserQuestion": true
+        },
+        "Prefill": true,
+        "InterruptMode": 0
+      },
+      "LLMConfig": {
+        "Mode": "CustomLLM",
+        "Url": "${SERVER_URL}/api/chat_callback",
+        "APIKey": "${CUSTOM_LLM_API_KEY}",
+        "HistoryLength": 10,
+        "VisionConfig": {
+          "Enable": false
+        }
+      },
+      "InterruptMode": 0
+    }
+  }
+}
